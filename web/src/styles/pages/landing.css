@@ -1,0 +1,88 @@
+#page-landing {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+
+  display: flex;
+  /* Alinha horizontal e verticalmente */
+  justify-content: center;
+  align-items: center;
+}
+
+#page-landing .content-wrapper {
+  /* Pra servir de referencia para outros elementos */
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+
+  height: 100%;
+  max-height: 600px;
+
+  display: flex;
+  align-items: flex-start;
+  /* column pq os elementos ficam arrumados um em cima do outro, verticalmente */
+  flex-direction: column;
+  /* Joga um pra cima, um pro meio e outro pra baixo, espalha o conteudo igulamente */
+  justify-content: space-between;
+  /* no-repeat serve para não ficar aparecendo a imagem varias vezes */
+  /* 80% é a posição no eixo x */
+  /* center é a posição no eixo y */
+  background: url(../../images/landing.svg) no-repeat 80% center;
+  /* Para garantir que o background não vai ficar cortado em algum lugar; */
+  background-size: contain;
+}
+
+#page-landing .content-wrapper main {
+  /* Para forçar a quebra de linha dentro do main, que serve pro <h1> e pro <p> */
+  max-width: 350px;
+}
+
+#page-landing .content-wrapper main h1 {
+  font-size: 76px;
+  font-weight: 900;
+  /* Espaçamento entre linhas */
+  line-height: 70px;
+}
+
+#page-landing .content-wrapper main p {
+  margin-top: 40px;
+  font-size: 24px;
+  line-height: 34px;
+}
+
+/* Joga a location pra cima direita */
+.content-wrapper .location {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  font-size: 24px;
+  line-height: 34px;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: right;
+}
+
+/* Joga a seta pra baixo direita */
+.content-wrapper .enter-app {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  width: 80px;
+  height: 80px;
+  background: #ffd666;
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  /* Alinha todo mundo centralizado um por cima do ioutro */
+  justify-content: center;
+
+  transition: background-color 0.2s;
+}
+.content-wrapper .enter-app:hover {
+  background: #96feff;
+}
