@@ -94,6 +94,27 @@ form.create-orphanage-form .input-block .images-container img {
   border-radius: 20px;
 }
 
+form.create-orphanage-form .input-block .images-container .addedImages {
+  width: 100%;
+  position: relative;
+}
+
+form.create-orphanage-form
+  .input-block
+  .images-container
+  .addedImages
+  .close-addedImages-button {
+  position: absolute;
+  display: flex;
+  top: 5px;
+  right: 5px;
+  background-color: Transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+}
+
 form.create-orphanage-form .input-block .images-container .new-image {
   width: 100%;
   height: 96px;

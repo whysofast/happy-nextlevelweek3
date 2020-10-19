@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import L, { LeafletMouseEvent } from "leaflet";
 import mapMarkerImg from "../images/map-marker.svg";
-import { FiPlus } from "react-icons/fi";
+import { FiPlus, FiX } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 import "../styles/pages/create-orphanage.css";
@@ -53,6 +53,20 @@ export default function CreateOrphanage() {
     setPreviewImages(ChosenImagesPreview);
   }
 
+  function handleCloseImage(index: number) {
+    // console.log(index);
+    const notClosedImages = images.filter((image, indexImage) => {
+      return index !== indexImage;
+    });
+    setImages(notClosedImages);
+
+    const ChosenImagesPreview = notClosedImages.map((img) => {
+      return URL.createObjectURL(img);
+    });
+
+    setPreviewImages(ChosenImagesPreview);
+  }
+
   async function HandleSubmit(event: FormEvent) {
     event.preventDefault();
 
@@ -67,7 +81,7 @@ export default function CreateOrphanage() {
     data.append("instructions", instructions);
     data.append("opening_hours", opening_hours);
     data.append("open_on_weekends", String(open_on_weekends));
-    images.map((image) => {
+    images.forEach((image) => {
       data.append("images", image);
     });
 
@@ -134,8 +148,18 @@ export default function CreateOrphanage() {
               <label htmlFor="images">Fotos</label>
 
               <div className="images-container">
-                {previewImages.map((image) => {
-                  return <img key={image} src={image} alt={name} />;
+                {previewImages.map((image, index) => {
+                  return (
+                    <div className="addedImages" key={`${image}`}>
+                      <button
+                        className="close-addedImages-button"
+                        onClick={() => handleCloseImage(index)}
+                      >
+                        <FiX size={24} color="rgba(255,255,255,.7)" />
+                      </button>
+                      <img src={image} alt={name} />
+                    </div>
+                  );
                 })}
 
                 <label htmlFor="image[]" className="new-image">
